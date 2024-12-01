@@ -17,5 +17,11 @@ pipeline{
                 git branch: 'main', credentialsId: 'github', url: 'https://github.com/destriu/cicd-practice'
             }
         }
+        stage("Build Application") {
+            sh "mvn clean package"
+        }
+        stage("Test Application") {
+            mvn "run test"
+        }
     }
 }
