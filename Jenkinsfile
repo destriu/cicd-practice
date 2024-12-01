@@ -13,4 +13,9 @@ pipeline{
             }
         }
     }
+    stages{
+        stage("Checkout from SCM") {
+            git branch 'main', credentials: 'github', url: 'https://github.com/destriu/cicd-practice'
+        }
+    }
 }
