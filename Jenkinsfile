@@ -12,10 +12,10 @@ pipeline{
                 cleanWs()
             }
         }
-    }
-    stages{
         stage("Checkout from SCM") {
-            git branch 'main', credentials: 'github', url: 'https://github.com/destriu/cicd-practice'
+            steps{
+                git branch 'main', credentials: 'github', url: 'https://github.com/destriu/cicd-practice'
+            }
         }
     }
 }
