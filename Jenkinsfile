@@ -12,7 +12,7 @@ pipeline{
                 cleanWs()
             }
         }
-        
+
         stage("Checkout from SCM") {
             steps{
                 git branch: 'main', credentialsId: 'github', url: 'https://github.com/destriu/cicd-practice'
@@ -42,8 +42,10 @@ pipeline{
         }
 
         stage("Quality Gate") {
-            script{
-                waitForQualityGate abortPipeline: false, credentialsId: 'jenkins-sonar-token'
+            steps{
+                script{
+                    waitForQualityGate abortPipeline: false, credentialsId: 'jenkins-sonar-token'
+                }
             }
         }
     }
