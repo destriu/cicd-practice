@@ -9,7 +9,7 @@ pipeline{
     }
 
     environment{
-        APP_NAME = 'cicd_practice'
+        APP_NAME = 'cicd-practice'
         RELEASE = '1.0.0'
         DOCKER_USER = 'demcdougald'
         DOCKER_PASS = 'dockerhub'
@@ -67,7 +67,7 @@ pipeline{
                         docker_image = docker.build "${IMAGE_NAME}"
                     }
 
-                    docker.withRegistry('',DOCKER_PASS){
+                    docker.withRegistry('', DOCKER_PASS){
                         docker_image.push("${IMAGE_TAG}")
                         docker_image.push("latest")
                     }
